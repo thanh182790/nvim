@@ -221,6 +221,16 @@ return {
             },
           },
         },
+        clangd = {
+          cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed", "--header-insertion=iwyu" },
+          filetypes = { "c", "cpp", "objc", "objcpp" },
+          root_dir = require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+          settings = {
+            clangd = {
+              fallbackFlags = { "-std=c++20" }, -- bạn có thể đổi thành c11/c17 nếu chỉ viết C
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
